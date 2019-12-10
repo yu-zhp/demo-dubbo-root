@@ -24,4 +24,9 @@ public class ProductController {
         RpcContext.getContext();
         return "该产品总共消费 ："+productService.getCost(a);
     }
+
+    public static void main(String[] args) {
+//        System.out.println(String.class.getName());
+        System.out.println("".equals(null));
+    }
 }

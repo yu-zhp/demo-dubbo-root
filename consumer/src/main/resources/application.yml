@@ -2,8 +2,7 @@ dubbo:
   application:
     name:  dubbo-consumer
   registry:
-    address: 127.0.0.1:2181
-    # �����뻻���Լ���zookeeperip
+    address: mse-c4e5aec3-p.zk.mse.aliyuncs.com:2181
     protocol: zookeeper
     check: false
   monitor:
