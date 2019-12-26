@@ -14,9 +14,8 @@ public class Dubbofilter implements Filter {
     @Override
     public Result invoke(Invoker<?> invoker, Invocation invocation) throws RpcException {
         String traceId = UUID.randomUUID().toString().replace("-", "");
-        String rpcName = invocation.getInvoker().getInterface() + "." + invocation.getMethodName();
+        String rpcName = invocation.getInvoker().getInterface() + "#" + invocation.getMethodName();
         log.info("traceId={} >>> InterfaceName={} , Parameter={}", traceId, rpcName, JSON.toJSONString(invocation.getArguments()));
-        System.out.println("==========================================================================================");
         //执行rpc接口
         long startTime = System.currentTimeMillis();
         Result result = invoker.invoke(invocation);
@@ -27,8 +26,8 @@ public class Dubbofilter implements Filter {
         } else {
             log.info("traceId={} >>> InterfaceName={} , Resposne={} , SpendTime={} ms", traceId, rpcName, JSON.toJSONString(new Object[]{result.getValue()}), elapsed);
         }
-//        RpcContext.getContext();
-
+        //RpcContext.getContext();
+        //todo
 
         return result;
     }
